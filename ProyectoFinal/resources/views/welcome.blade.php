@@ -29,7 +29,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block" style="float: right; width:15%; margin: 10px -30px 0 0">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline"><img src="img/back.png" alt="" width="30%"></a>
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline"><img src="img/login.png" alt="" width="30%" style="position: absolute; right: 50px; top: 20px"></a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline"><img src="img/login.png" alt="" width="30%"></a>
 
