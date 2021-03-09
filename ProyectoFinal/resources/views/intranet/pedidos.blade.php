@@ -31,24 +31,20 @@
                         <tr class="border-b">
                             <th class="text-left p-3 px-5">Cliente</th>
                             <th class="text-left p-3 px-5">Restaurante</th>
-                            <th class="text-left p-3 px-5">Plato</th>
-                            <th class="text-left p-3 px-5">Cantidad</th>
                             <th class="text-left p-3 px-5">Estado</th>
                             <th></th>
                         </tr>
                         @foreach ($pedidos as $pedido)
-                        @php
+                        {{-- @php
                             $cliente = App\Models\User::where('id', '=', $pedido->user_id)->first()->name;
                             $restaurante = App\Models\Restaurante::where('id', '=', $pedido->restaurante_id)->first()->nombre;
                             $plato = App\Models\Plato::where('id', '=', $pedido->plato_id)->first()->nombre;
                             $cantidad = App\Models\LineasPedidos::where('plato_id', '=', $pedido->plato_id)->first()->cantidad;
-                        @endphp
+                        @endphp --}}
                             <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                                <td class="p-3 px-5" style="width: 200px">{{ ucwords($cliente) }}</td>
-                                <td class="p-3 px-5" style="width: 200px">{{ ucwords($restaurante) }}</td>
-                                <td class="p-3 px-5" style="width: 160px">{{ ucwords($plato) }}</td>
-                                <td class="p-3 px-5" style="width: 160px">{{ ucwords($cantidad) }}</td>
-                                <td class="p-3 px-5" style="width: 160px">{{ ucwords($pedido->estado) }}</td>
+                                <td class="p-3 px-5" style="width: 270px">{{ $pedido->cliente->name }}</td>
+                                <td class="p-3 px-5" style="width: 270px">{{ $pedido->restaurante->nombre }}</td>
+                                <td class="p-3 px-5" style="width: 270px">{{ $pedido->estado }}</td>
                                 <td class="p-3 px-5 flex justify-end">
                                     <div style="margin-top: 20px">
                                     <a href="/fooding/restaurante/{{$pedido->id }}">

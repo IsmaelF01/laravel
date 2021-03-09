@@ -30,24 +30,25 @@
                         <tr class="border-b">
                             <th class="text-left p-3 px-5">Cliente</th>
                             <th class="text-left p-3 px-5">Restaurante</th>
-                            <th class="text-left p-3 px-5">Plato</th>
-                            <th class="text-left p-3 px-5">Cantidad</th>
                             <th class="text-left p-3 px-5">Estado</th>
                             <th></th>
                         </tr>
                         @foreach ($pedidos as $pedido)
-                            @php
+                            {{-- @php
                                 $cliente = App\Models\User::where('id', '=', $pedido->user_id)->first()->name;
                                 $restaurante = App\Models\Restaurante::where('id', '=', $pedido->restaurante_id)->first()->nombre;
                                 $plato = App\Models\Plato::where('id', '=', $pedido->plato_id)->first()->nombre;
                                 $cantidad = App\Models\LineasPedidos::where('plato_id', '=', $pedido->plato_id)->first()->cantidad;
-                            @endphp
+                            @endphp --}}
+
+                            {{-- @foreach ($pedido->platos as $lp) --}}
+
+
+
                             <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                                <td class="p-3 px-5" style="width: 200px">{{ ucwords($cliente) }}</td>
-                                <td class="p-3 px-5" style="width: 200px">{{ ucwords($restaurante) }}</td>
-                                <td class="p-3 px-5" style="width: 160px">{{ ucwords($plato) }}</td>
-                                <td class="p-3 px-5" style="width: 160px">{{ ucwords($cantidad) }}</td>
-                                <td class="p-3 px-5" style="width: 160px">{{ ucwords($pedido->estado) }}</td>
+                                <td class="p-3 px-5" style="width: 270px">{{ $pedido->cliente->name }}</td>
+                                <td class="p-3 px-5" style="width: 270px">{{ $pedido->restaurante->nombre }}</td>
+                                <td class="p-3 px-5" style="width: 270px">{{ $pedido->estado }}</td>
                                 <td class="p-3 px-5 flex justify-end">
                                     <div style="margin-top: 20px">
                                         <a href="/fooding/restaurante/{{ $pedido->id }}">
@@ -58,16 +59,14 @@
                                                     src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwNSA1MTIuMDA1IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDA1IDUxMi4wMDU7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNNTA1Ljc0OSw0NzUuNTg3bC0xNDUuNi0xNDUuNmMyOC4yMDMtMzQuODM3LDQ1LjE4NC03OS4xMDQsNDUuMTg0LTEyNy4zMTdjMC0xMTEuNzQ0LTkwLjkyMy0yMDIuNjY3LTIwMi42NjctMjAyLjY2Nw0KCQkJUzAsOTAuOTI1LDAsMjAyLjY2OXM5MC45MjMsMjAyLjY2NywyMDIuNjY3LDIwMi42NjdjNDguMjEzLDAsOTIuNDgtMTYuOTgxLDEyNy4zMTctNDUuMTg0bDE0NS42LDE0NS42DQoJCQljNC4xNiw0LjE2LDkuNjIxLDYuMjUxLDE1LjA4Myw2LjI1MXMxMC45MjMtMi4wOTEsMTUuMDgzLTYuMjUxQzUxNC4wOTEsNDk3LjQxMSw1MTQuMDkxLDQ4My45MjgsNTA1Ljc0OSw0NzUuNTg3eg0KCQkJIE0yMDIuNjY3LDM2Mi42NjljLTg4LjIzNSwwLTE2MC03MS43NjUtMTYwLTE2MHM3MS43NjUtMTYwLDE2MC0xNjBzMTYwLDcxLjc2NSwxNjAsMTYwUzI5MC45MDEsMzYyLjY2OSwyMDIuNjY3LDM2Mi42Njl6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=" />
                                             </button></a>
 
-                                        <button onclick="document.getElementById('edit').showModal()"
-                                            style="margin-right: 10px;" type="button"
+                                        <button onclick="document.getElementById('edit').showModal()" style="margin-right: 10px;" type="button"
                                             class="focus:outline-none text-white text-sm py-1 px-2 rounded-md bg-yellow-500 hover:bg-yellow-600 hover:shadow-lg">
                                             Edit
                                             <img style="width: 18px; float: right; margin-left: 2px"
                                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMSIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00MDUuMzMyMDMxIDI1Ni40ODQzNzVjLTExLjc5Njg3NSAwLTIxLjMzMjAzMSA5LjU1ODU5NC0yMS4zMzIwMzEgMjEuMzMyMDMxdjE3MC42Njc5NjljMCAxMS43NTM5MDYtOS41NTg1OTQgMjEuMzMyMDMxLTIxLjMzMjAzMSAyMS4zMzIwMzFoLTI5OC42Njc5NjljLTExLjc3NzM0NCAwLTIxLjMzMjAzMS05LjU3ODEyNS0yMS4zMzIwMzEtMjEuMzMyMDMxdi0yOTguNjY3OTY5YzAtMTEuNzUzOTA2IDkuNTU0Njg3LTIxLjMzMjAzMSAyMS4zMzIwMzEtMjEuMzMyMDMxaDE3MC42Njc5NjljMTEuNzk2ODc1IDAgMjEuMzMyMDMxLTkuNTU4NTk0IDIxLjMzMjAzMS0yMS4zMzIwMzEgMC0xMS43NzczNDQtOS41MzUxNTYtMjEuMzM1OTM4LTIxLjMzMjAzMS0yMS4zMzU5MzhoLTE3MC42Njc5NjljLTM1LjI4NTE1NiAwLTY0IDI4LjcxNDg0NC02NCA2NHYyOTguNjY3OTY5YzAgMzUuMjg1MTU2IDI4LjcxNDg0NCA2NCA2NCA2NGgyOTguNjY3OTY5YzM1LjI4NTE1NiAwIDY0LTI4LjcxNDg0NCA2NC02NHYtMTcwLjY2Nzk2OWMwLTExLjc5Njg3NS05LjUzOTA2My0yMS4zMzIwMzEtMjEuMzM1OTM4LTIxLjMzMjAzMXptMCAwIi8+PHBhdGggZD0ibTIwMC4wMTk1MzEgMjM3LjA1MDc4MWMtMS40OTIxODcgMS40OTIxODgtMi40OTYwOTMgMy4zOTA2MjUtMi45MjE4NzUgNS40Mzc1bC0xNS4wODIwMzEgNzUuNDM3NWMtLjcwMzEyNSAzLjQ5NjA5NC40MDYyNSA3LjEwMTU2MyAyLjkyMTg3NSA5LjY0MDYyNSAyLjAyNzM0NCAyLjAyNzM0NCA0Ljc1NzgxMiAzLjExMzI4MiA3LjU1NDY4OCAzLjExMzI4Mi42Nzk2ODcgMCAxLjM4NjcxOC0uMDYyNSAyLjA4OTg0My0uMjEwOTM4bDc1LjQxNDA2My0xNS4wODIwMzFjMi4wODk4NDQtLjQyOTY4OCAzLjk4ODI4MS0xLjQyOTY4OCA1LjQ2MDkzNy0yLjkyNTc4MWwxNjguNzg5MDYzLTE2OC43ODkwNjMtNzUuNDE0MDYzLTc1LjQxMDE1NnptMCAwIi8+PHBhdGggZD0ibTQ5Ni4zODI4MTIgMTYuMTAxNTYyYy0yMC43OTY4NzQtMjAuODAwNzgxLTU0LjYzMjgxMi0yMC44MDA3ODEtNzUuNDE0MDYyIDBsLTI5LjUyMzQzOCAyOS41MjM0MzggNzUuNDE0MDYzIDc1LjQxNDA2MiAyOS41MjM0MzctMjkuNTI3MzQzYzEwLjA3MDMxMy0xMC4wNDY4NzUgMTUuNjE3MTg4LTIzLjQ0NTMxMyAxNS42MTcxODgtMzcuNjk1MzEzcy01LjU0Njg3NS0yNy42NDg0MzctMTUuNjE3MTg4LTM3LjcxNDg0NHptMCAwIi8+PC9zdmc+" />
                                         </button></a>
                                         <a href="/intranet/repartidor/{{ $pedido->id }}/delete">
-                                            <button style="margin-right: 10px" type="button"
-                                                class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                                            <button style="margin-right: 10px" type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
                                                 Delete
                                                 <img style="width: 20px; float: right; margin-left: 2px"
                                                     src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSItNDcgMCA1MTIgNTEyIiB3aWR0aD0iNTEycHQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTQxNi44NzUgMTE0LjQ0MTQwNi0xMS4zMDQ2ODgtMzMuODg2NzE4Yy00LjMwNDY4Ny0xMi45MDYyNS0xNi4zMzk4NDMtMjEuNTc4MTI2LTI5Ljk0MTQwNi0yMS41NzgxMjZoLTk1LjAxMTcxOHYtMzAuOTMzNTkzYzAtMTUuNDYwOTM4LTEyLjU3MDMxMy0yOC4wNDI5NjktMjguMDI3MzQ0LTI4LjA0Mjk2OWgtODcuMDA3ODEzYy0xNS40NTMxMjUgMC0yOC4wMjczNDMgMTIuNTgyMDMxLTI4LjAyNzM0MyAyOC4wNDI5Njl2MzAuOTMzNTkzaC05NS4wMDc4MTNjLTEzLjYwNTQ2OSAwLTI1LjY0MDYyNSA4LjY3MTg3Ni0yOS45NDUzMTMgMjEuNTc4MTI2bC0xMS4zMDQ2ODcgMzMuODg2NzE4Yy0yLjU3NDIxOSA3LjcxNDg0NC0xLjI2OTUzMTIgMTYuMjU3ODEzIDMuNDg0Mzc1IDIyLjg1NTQ2OSA0Ljc1MzkwNiA2LjU5NzY1NiAxMi40NDUzMTIgMTAuNTM5MDYzIDIwLjU3ODEyNSAxMC41MzkwNjNoMTEuODE2NDA2bDI2LjAwNzgxMyAzMjEuNjA1NDY4YzEuOTMzNTk0IDIzLjg2MzI4MiAyMi4xODM1OTQgNDIuNTU4NTk0IDQ2LjEwOTM3NSA0Mi41NTg1OTRoMjA0Ljg2MzI4MWMyMy45MjE4NzUgMCA0NC4xNzU3ODEtMTguNjk1MzEyIDQ2LjEwNTQ2OS00Mi41NjI1bDI2LjAwNzgxMi0zMjEuNjAxNTYyaDYuNTQyOTY5YzguMTMyODEyIDAgMTUuODI0MjE5LTMuOTQxNDA3IDIwLjU3ODEyNS0xMC41MzUxNTcgNC43NTM5MDYtNi41OTc2NTYgNi4wNTg1OTQtMTUuMTQ0NTMxIDMuNDg0Mzc1LTIyLjg1OTM3NXptLTI0OS4zMjAzMTItODQuNDQxNDA2aDgzLjA2MjV2MjguOTc2NTYyaC04My4wNjI1em0xNjIuODA0Njg3IDQzNy4wMTk1MzFjLS42Nzk2ODcgOC40MDIzNDQtNy43OTY4NzUgMTQuOTgwNDY5LTE2LjIwMzEyNSAxNC45ODA0NjloLTIwNC44NjMyODFjLTguNDA2MjUgMC0xNS41MjM0MzgtNi41NzgxMjUtMTYuMjAzMTI1LTE0Ljk4MDQ2OWwtMjUuODE2NDA2LTMxOS4xODM1OTNoMjg4Ljg5ODQzN3ptLTI5OC41NjY0MDYtMzQ5LjE4MzU5MyA5LjI2OTUzMS0yNy43ODkwNjNjLjIxMDkzOC0uNjQwNjI1LjgwODU5NC0xLjA3MDMxMyAxLjQ4NDM3NS0xLjA3MDMxM2gzMzMuMDgyMDMxYy42NzU3ODIgMCAxLjI2OTUzMi40Mjk2ODggMS40ODQzNzUgMS4wNzAzMTNsOS4yNjk1MzEgMjcuNzg5MDYzem0wIDAiLz48cGF0aCBkPSJtMjgyLjUxNTYyNSA0NjUuOTU3MDMxYy4yNjU2MjUuMDE1NjI1LjUyNzM0NC4wMTk1MzEuNzkyOTY5LjAxOTUzMSA3LjkyNTc4MSAwIDE0LjU1MDc4MS02LjIxMDkzNyAxNC45NjQ4NDQtMTQuMjE4NzVsMTQuMDg1OTM3LTI3MC4zOTg0MzdjLjQyOTY4Ny04LjI3MzQzNy01LjkyOTY4Ny0xNS4zMzIwMzEtMTQuMTk5MjE5LTE1Ljc2MTcxOS04LjI5Mjk2OC0uNDQxNDA2LTE1LjMyODEyNSA1LjkyNTc4Mi0xNS43NjE3MTggMTQuMTk5MjE5bC0xNC4wODIwMzIgMjcwLjM5ODQzN2MtLjQyOTY4NyA4LjI3MzQzOCA1LjkyNTc4MiAxNS4zMzIwMzIgMTQuMTk5MjE5IDE1Ljc2MTcxOXptMCAwIi8+PHBhdGggZD0ibTEyMC41NjY0MDYgNDUxLjc5Mjk2OWMuNDM3NSA3Ljk5NjA5MyA3LjA1NDY4OCAxNC4xODM1OTMgMTQuOTY0ODQ0IDE0LjE4MzU5My4yNzM0MzggMCAuNTU0Njg4LS4wMDc4MTIuODMyMDMxLS4wMjM0MzcgOC4yNjk1MzEtLjQ0OTIxOSAxNC42MDkzNzUtNy41MTk1MzEgMTQuMTYwMTU3LTE1Ljc5Mjk2OWwtMTQuNzUzOTA3LTI3MC4zOTg0MzdjLS40NDkyMTktOC4yNzM0MzgtNy41MTk1MzEtMTQuNjEzMjgxLTE1Ljc5Mjk2OS0xNC4xNjAxNTctOC4yNjk1MzEuNDQ5MjE5LTE0LjYwOTM3NCA3LjUxOTUzMi0xNC4xNjAxNTYgMTUuNzkyOTY5em0wIDAiLz48cGF0aCBkPSJtMjA5LjI1MzkwNiA0NjUuOTc2NTYyYzguMjg1MTU2IDAgMTUtNi43MTQ4NDMgMTUtMTV2LTI3MC4zOTg0MzdjMC04LjI4NTE1Ni02LjcxNDg0NC0xNS0xNS0xNXMtMTUgNi43MTQ4NDQtMTUgMTV2MjcwLjM5ODQzN2MwIDguMjg1MTU3IDYuNzE0ODQ0IDE1IDE1IDE1em0wIDAiLz48L3N2Zz4=" />
@@ -75,73 +74,71 @@
                                     </div>
                                 </td>
                             </tr>
+                            <dialog id="edit"="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
+
+                                <div class="flex flex-col w-full h-auto ">
+                                    <!-- Header -->
+                                    <div class="flex w-full h-auto justify-center items-center">
+                                        <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
+                                            <img src="/img/logo.png" alt="" width="20%" style="margin-left: 50px">
+
+                                        </div>
+                                        <div onclick="document.getElementById('edit').close();"
+                                            class="flex w-1/12 h-auto justify-center cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="feather feather-x">
+                                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                                            </svg>
+                                        </div>
+                                        <!--Header End-->
+                                    </div>
+                                    <!-- Modal Content-->
+                                    <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500" style="height: 200px">
+                                        <div class=" flex items-center justify-center">
+
+                                            <form action="/intranet/repartidor/{{ $pedido->id }}" method="POST" id="form"
+                                                class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                                                enctype="multipart/form-data">
+                                                <h1 class="block text-gray-700 font-bold mb-2 text-xl text-center" style="position: absolute; left: 20%; top: 40%">
+                                                    Modificador del estado del pedido</h1>
+                                                @csrf
+                                                <br>
+
+                                                <div class="mb-4" style="margin-left: -300px">
+                                                    <label style="position: absolute; left: 15%; top: 60%" class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                                                        Estado
+                                                    </label>
+                                                    <select style="position: absolute; left: 30%; width: 200px; top: 60%" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        name="estado" id="estado" type="text" required>
+                                                        <option selected disabled hidden>Seleccione</option>
+                                                        <option value="Entregado">Entregado</option>
+                                                        <option value="Cancelado">Cancelado</option>
+                                                    </select>
+                                                </div>
+
+                                                <div style="position: absolute; right: 10%; top: 60%" class="flex items-right justify-between">
+                                                    <button id="submit"
+                                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                                        type="submit">
+                                                        Edit <img src="/img/mas.svg" alt="" style="float: right; margin-left: 5px">
+                                                    </button>
+                                                </div>
+                                                <div class="mb-4">
+                                            </form>
+                                        </div>
+                                        <script src="https://kit.fontawesome.com/1e268974cb.js" crossorigin="anonymous">
+                                        </script>
+                                        <script src="assets/js/helpers.js"></script>
+                                    </div>
+                                    <!-- End of Modal Content-->
+                                </div>
+                            </dialog>
                         @endforeach
                     </tbody>
                 </table>
                 {{ $pedidos->Links() }}
-                <dialog id="edit"="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
-
-                    <div class="flex flex-col w-full h-auto ">
-                        <!-- Header -->
-                        <div class="flex w-full h-auto justify-center items-center">
-                            <div class="flex w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
-                                <img src="/img/logo.png" alt="" width="20%" style="margin-left: 50px">
-
-                            </div>
-                            <div onclick="document.getElementById('edit').close();"
-                                class="flex w-1/12 h-auto justify-center cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-x">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                </svg>
-                            </div>
-                            <!--Header End-->
-                        </div>
-                        <!-- Modal Content-->
-                        <div
-                            class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
-                            <div class=" flex items-center justify-center">
-
-                                <form action="/intranet/repartidor/{{ $pedido->id }}" method="POST" id="form"
-                                    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-                                    enctype="multipart/form-data">
-                                    <h1 class="block text-gray-700 font-bold mb-2 text-xl text-center">
-                                        Modificador del estado del pedido</h1>
-                                    @csrf
-                                    <br>
-
-                                    <div class="mb-4">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                                            Estado
-                                        </label>
-                                        <select
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            name="estado" id="estado" type="text" required>
-                                            <option selected disabled hidden>Seleccione</option>
-                                            <option value="Entregado">Entregado</option>
-                                            <option value="Cancelado">Cancelado</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="flex items-right justify-between">
-                                        <button id="submit"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                            type="submit">
-                                            Edit <img src="/img/mas.svg" alt="" style="float: right; margin-left: 5px">
-                                        </button>
-                                    </div>
-                                    <div class="mb-4">
-                                </form>
-                            </div>
-                            <script src="https://kit.fontawesome.com/1e268974cb.js" crossorigin="anonymous">
-                            </script>
-                            <script src="assets/js/helpers.js"></script>
-                        </div>
-                        <!-- End of Modal Content-->
-                    </div>
-                </dialog>
             </div>
         </div>
     </div>

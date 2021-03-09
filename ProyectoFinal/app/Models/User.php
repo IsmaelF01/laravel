@@ -79,4 +79,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Restaurante::class);
     }
+
+    public function pedido()
+    {
+        return $this->hasMany(Restaurante::class);
+    }
 }

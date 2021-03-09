@@ -12,4 +12,8 @@ class Restaurante extends Model
     protected $fillable = [
         'nombre', 'direccion', 'ciudad', 'telefono', 'latitud', 'longitud'
     ];
+
+    public function pedido(){
+        return $this->hasMany(Pedido::class);
+    }
 }

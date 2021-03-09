@@ -16,4 +16,12 @@ class Pedido extends Model
     public function platos(){
         return $this->belongsToMany(Plato::class ,'lineas_pedidos', 'plato_id', 'pedido_id');
     }
+
+    public function cliente(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function restaurante(){
+        return $this->belongsTo(Restaurante::class);
+    }
 }

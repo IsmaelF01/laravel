@@ -65,7 +65,6 @@ class CartController extends Controller
             $plato = Plato::find($productos[$i]);
             $pedido->user_id = Auth::id();
             $pedido->restaurante_id = $plato->restaurante_id;
-            $pedido->plato_id = $plato->id;
             $pedido->repartidor_id = null;
             $pedido->estado = "recibido";
             $pedido->save();
