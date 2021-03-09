@@ -86,7 +86,7 @@
                     </table>
                 </div>
             </div>
-            {{-- {{ $platos->Links() }} --}}
+            {{ $platos->Links() }}
         </div>
             <dialog id="edit"="h-auto w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
 

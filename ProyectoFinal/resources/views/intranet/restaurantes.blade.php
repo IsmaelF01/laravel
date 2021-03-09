@@ -341,7 +341,7 @@
                         @endif
                     </div>
                 </div>
-                {{-- {{ $restaurantes->Links() }} --}}
+                {{ $restaurantes->Links() }}
         </div>
     </div>
 </x-app-layout>

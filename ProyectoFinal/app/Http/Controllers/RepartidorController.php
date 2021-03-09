@@ -18,7 +18,7 @@ class RepartidorController extends Controller
     public function index(Request $request)
     {
         $query = trim($request->get('search'));
-        $pedidos = Pedido::where("estado", '!=', "recibido")->where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->get();
+        $pedidos = Pedido::where("estado", '!=', "recibido")->where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
 
         return view('intranet.repartidores', ['pedidos' => $pedidos]);
     }
@@ -26,7 +26,7 @@ class RepartidorController extends Controller
     public function porRest($id, Request $request)
     {
         $query = trim($request->get('search'));
-        $pedidos = Pedido::where("restaurante_id", '=', $id)->where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->get();
+        $pedidos = Pedido::where("restaurante_id", '=', $id)->where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
 
         return view('intranet.pedidos', ['pedidos' => $pedidos, 'restaurante_id' => $id]);
     }
@@ -81,7 +81,7 @@ class RepartidorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function cambiaEstado($id_pedido)
+    public function cambiaEstado($id, $id_pedido)
     {
         DB::table('pedidos')
               ->where('id', $id_pedido)
@@ -89,7 +89,7 @@ class RepartidorController extends Controller
                 'estado' => "Finalizado",
                 ]);
 
-        return redirect()->action([RepartidorController::class, 'porRest']);
+        return redirect("/intranet/restaurante/{$id}/pedido");
     }
 
     public function update(Request $request, $id)

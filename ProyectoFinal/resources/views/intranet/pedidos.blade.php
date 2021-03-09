@@ -73,7 +73,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- {{ $pedidos->Links() }} --}}
+                {{ $pedidos->Links() }}
             </div>
         </div>
     </div>

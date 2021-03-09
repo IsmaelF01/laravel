@@ -24,9 +24,9 @@ class RestauranteController extends Controller
             $user = User::find(Auth::id());
             $query = trim($request->get('search'));
             if ($user->role->role == "admin") {
-                $restaurantes = Restaurante::where('nombre', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->get();
+                $restaurantes = Restaurante::where('nombre', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
             } else {
-                $restaurantes = Restaurante::where('user_id', '=', Auth::id())->where('nombre', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->get();
+                $restaurantes = Restaurante::where('user_id', '=', Auth::id())->where('nombre', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(10);
             }
             return view("intranet.restaurantes", ["restaurantes" => $restaurantes, "user" => $user]);
         }
@@ -35,7 +35,7 @@ class RestauranteController extends Controller
     public function indexPlatos(Request $request, $id){
         if($request){
             $query = trim($request->get('search'));
-            $platos = Plato::where('nombre', 'LIKE', '%'.$query.'%')->where('restaurante_id', '=', $id)->orderBy('id', 'asc')->get();
+            $platos = Plato::where('nombre', 'LIKE', '%'.$query.'%')->where('restaurante_id', '=', $id)->orderBy('id', 'asc')->paginate(5);
 
             return view("intranet.platos", ["platos" => $platos, "restaurante_id" => $id]);
         }
