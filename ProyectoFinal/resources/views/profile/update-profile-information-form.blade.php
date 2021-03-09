@@ -59,6 +59,41 @@
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
+        <!-- LastName -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="lastname" value="{{ __('LastName') }}" />
+            <x-jet-input id="lastname" type="text" class="mt-1 block w-full" wire:model.defer="state.lastname" autocomplete="lastname" />
+            <x-jet-input-error for="lastname" class="mt-2" />
+        </div>
+
+        <!-- Address -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="address" value="{{ __('Address') }}" />
+            <x-jet-input id="address" type="text" class="mt-1 block w-full" wire:model.defer="state.address" autocomplete="address" />
+            <x-jet-input-error for="address" class="mt-2" />
+        </div>
+
+        <!-- City -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="city" value="{{ __('City') }}" />
+            <x-jet-input id="city" type="text" class="mt-1 block w-full" wire:model.defer="state.city" autocomplete="city" />
+            <x-jet-input-error for="city" class="mt-2" />
+        </div>
+
+        <!-- Movil -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="movil" value="{{ __('Movil') }}" />
+            <x-jet-input id="movil" type="text" class="mt-1 block w-full" wire:model.defer="state.movil" autocomplete="movil" />
+            <x-jet-input-error for="movil" class="mt-2" />
+        </div>
+
+        <!-- DNI -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="dni" value="{{ __('Dni') }}" />
+            <x-jet-input id="dni" type="text" class="mt-1 block w-full" wire:model.defer="state.dni" autocomplete="dni" />
+            <x-jet-input-error for="dni" class="mt-2" />
+        </div>
+
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />

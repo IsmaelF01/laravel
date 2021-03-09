@@ -50,6 +50,14 @@
             </div>
 
             <div class="mt-4">
+                <input type="hidden" name="salario" id="salario" value="null">
+            </div>
+
+            <div class="mt-4">
+                <input type="hidden" name="estado" id="estado" value="1">
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
