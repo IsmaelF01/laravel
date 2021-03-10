@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LineasPedidos;
 use App\Models\Pedido;
+use App\Models\Plato;
 use App\Models\Restaurante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,13 @@ class RepartidorController extends Controller
         $pedidos = Pedido::where("restaurante_id", '=', $id)->where('estado', 'LIKE', '%'.$query.'%')->orderBy('id', 'asc')->paginate(5);
 
         return view('intranet.pedidos', ['pedidos' => $pedidos, 'restaurante_id' => $id]);
+    }
+
+    public function verPlatos($id)
+    {
+        $pedido = Pedido::find($id);
+        $platos = $pedido->platos;
+        return view('intranet.platospedido', ['platos'=>$platos, 'pedido'=>$pedido, ]);
     }
 
     /**

@@ -60,13 +60,14 @@ class CartController extends Controller
 
         // print_r($productos);
         // Esta esta chapuza porque el request me pasa tambien el token y no se porque
+        //Hoy a dia 10 he aprendido a quitar el tokken con un error que le paso a diego pero ya no voy a cambiar esto <3
         for ($i = 0; $i < count($productos)/2-1; $i++) {
             $pedido = new Pedido();
             $plato = Plato::find($productos[$i]);
             $pedido->user_id = Auth::id();
             $pedido->restaurante_id = $plato->restaurante_id;
             $pedido->repartidor_id = null;
-            $pedido->estado = "recibido";
+            $pedido->estado = "Recibido";
             $pedido->save();
             $pedido->platos()->attach($pedido->id, ['cantidad' => $productos["cant".$i], 'plato_id' => $plato->id]);
         }

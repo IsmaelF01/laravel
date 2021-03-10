@@ -14,7 +14,7 @@ class Pedido extends Model
     ];
 
     public function platos(){
-        return $this->belongsToMany(Plato::class ,'lineas_pedidos', 'plato_id', 'pedido_id');
+        return $this->belongsToMany(Plato::class ,'lineas_pedidos', 'plato_id', 'pedido_id')->withPivot('cantidad');
     }
 
     public function cliente(){

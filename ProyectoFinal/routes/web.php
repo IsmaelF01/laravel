@@ -71,6 +71,7 @@ Route::prefix('intranet')->middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:repartidor', 'prefix' => 'repartidor', 'as' => 'repartidor'], function () {
         Route::get('/{id}/delete', [RepartidorController::class, 'destroy']);
         Route::post('/{id}', [RepartidorController::class, 'update']);
+        Route::get('/{id}/verplato', [RepartidorController::class, 'verPlatos']);
         Route::resource('/', RepartidorController::class);
     });
 });

@@ -34,24 +34,13 @@
                             <th></th>
                         </tr>
                         @foreach ($pedidos as $pedido)
-                            {{-- @php
-                                $cliente = App\Models\User::where('id', '=', $pedido->user_id)->first()->name;
-                                $restaurante = App\Models\Restaurante::where('id', '=', $pedido->restaurante_id)->first()->nombre;
-                                $plato = App\Models\Plato::where('id', '=', $pedido->plato_id)->first()->nombre;
-                                $cantidad = App\Models\LineasPedidos::where('plato_id', '=', $pedido->plato_id)->first()->cantidad;
-                            @endphp --}}
-
-                            {{-- @foreach ($pedido->platos as $lp) --}}
-
-
-
                             <tr class="border-b hover:bg-orange-100 bg-gray-100">
                                 <td class="p-3 px-5" style="width: 270px">{{ $pedido->cliente->name }}</td>
                                 <td class="p-3 px-5" style="width: 270px">{{ $pedido->restaurante->nombre }}</td>
                                 <td class="p-3 px-5" style="width: 270px">{{ $pedido->estado }}</td>
                                 <td class="p-3 px-5 flex justify-end">
                                     <div style="margin-top: 20px">
-                                        <a href="/fooding/restaurante/{{ $pedido->id }}">
+                                        <a href="/intranet/repartidor/{{ $pedido->id }}/verplato">
                                             <button style=" margin-left: -80px; margin-right: 10px" type="button"
                                                 class="focus:outline-none text-white text-sm py-1 px-2 rounded-md bg-blue-500 hover:bg-blue-600 hover:shadow-lg">
                                                 View
